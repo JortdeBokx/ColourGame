@@ -33,11 +33,12 @@ header h1{
     width: 10%;
     height: 45px;
     display: inline-block;
-
+    margin: 0;
 }
 
 #ThatBit{
     text-align: left;
+    height: 45px;
 }
 #controls{
     display: inline-block;
@@ -46,7 +47,7 @@ header h1{
     color: black;
     padding: 0;
     text-align: left;
-
+    margin: 0;
 
     font-family: GT Walsheim, sans-serif;
     letter-spacing: 1px;
