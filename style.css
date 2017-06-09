@@ -17,7 +17,7 @@ header{
     animation: GradientAnimation 480s linear infinite;
 
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 
 }
 header h1{
@@ -27,23 +27,36 @@ header h1{
     font-weight: 700;
 }
 
-#controls{
-    background: white;
-    max-width: 1000px;
-    margin: auto;
-    color: black;
-    padding: 0 40px;
+.blackbarheader{
+
+    background: black;
+    width: 10%;
+    height: 45px;
+    display: inline-block;
+}
+
+#ThatBit{
     text-align: left;
+}
+#controls{
+    display: inline-block;
+    background: white;
+    width: 80%;
+    color: black;
+    padding: 0;
+    text-align: left;
+
 
     font-family: GT Walsheim, sans-serif;
     letter-spacing: 1px;
     font-size: 2em;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #field{
     max-width: 1000px;
     margin: 0 auto;
+    user-select: none;
 }
 
 .colourbox{
