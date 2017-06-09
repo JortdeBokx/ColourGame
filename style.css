@@ -12,9 +12,9 @@ body{
 }
 header{
     background: linear-gradient(141deg, #00db02, #dbd300, #f00010, #c76f00,
-    #6700b0, #1300ff, #00d7ff);
+    #6700b0, #585fff, #00d7ff);
     background-size: 1000% 1000%;
-    animation: GradientAnimation 480s ease infinite;
+    animation: GradientAnimation 480s linear infinite;
 
     text-align: center;
     padding: 10px 0;
@@ -53,6 +53,7 @@ header h1{
     width: 200px;
     height: 200px;
     margin: 50px;
+    border-radius: 10px;
 }
 
 
