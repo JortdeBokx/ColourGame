@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    background: black;
+    text-align: center;
+    min-height: 100%;
+}
+
+#content{
+    max-width: 85%;
+    margin: 0 auto;
+    color: white;
+}
+header{
+    background: linear-gradient(141deg, #00db02, #dbd300, #f00010, #c76f00,
+    #6700b0, #1300ff, #00d7ff);
+    background-size: 1000% 1000%;
+    animation: GradientAnimation 480s ease infinite;
+
+    text-align: center;
+    padding: 10px 0;
+
+}
+header h1{
+    font-family: GT Walsheim, sans-serif;
+    color: white;
+    font-size: 3.5em;
+    font-weight: 400px;
+}
+
+#controls{
+    background: white;
+    max-width: 1000px;
+    margin: auto;
+    color: black;
+    padding: 0 40px;
+    text-align: left;
+
+    font-family: GT Walsheim, sans-serif;
+    letter-spacing: 1px;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+#field{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.colourbox{
+    background: white;
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+}
+
+
+@keyframes GradientAnimation {
+    0%{background-position:0% 48%}
+    50%{background-position:100% 53%}
+    100%{background-position:0% 48%}
+}
