@@ -4,8 +4,10 @@
 
 var colouredBoxes = document.getElementsByClassName("colourbox");
 var levelDisplay = document.getElementById("level");
+var highscoreDisplay = document.getElementById("highscore");
 
 var level = 1;
+var highscore = 0;
 var correctBox = 0;
 var chosenColour = []; //array of [R,G,B] values
 
@@ -16,8 +18,10 @@ init();
 function init() {
     //initialises the playing field
     level = 1;
+    highscore = 0;
     correctBox = Math.floor((Math.random() * 6));
     levelDisplay.textContent = String(level);
+    highscoreDisplay.textContent = String(highscore);
     initBoxes();
     colourBoxes();
 
@@ -27,12 +31,14 @@ function resetToLevel1(){
     level = 1;
     correctBox = Math.floor((Math.random() * 6));
     levelDisplay.textContent = String(level);
+    highscoreDisplay.textContent = String(highscore);
     colourBoxes();
 }
 
 function resetNextLevel(){
     correctBox = Math.floor((Math.random() * 6));
     levelDisplay.textContent = String(level);
+    highscoreDisplay.textContent = String(highscore);
     colourBoxes();
 }
 
@@ -57,8 +63,8 @@ function colourBoxes(){
 
 }
 function calculateDiffcolour() {
-    var b1 = 40 / (level /2);
-    var b2 = 60 / (level);
+    var b1 = 40 / (level /10);
+    var b2 = 50 / (level);
     var b3 = b2 - b1;
     var Deviance = Math.floor((Math.random() * b3) + b1);
     var random_boolean = Math.random() >= 0.5;
@@ -113,9 +119,15 @@ function initBoxes() {
         colouredBoxes[i].addEventListener("click", function() {
             if (this.getAttribute("id") === "colourbox" + String(correctBox)) {
                 level += 1;
+                if(highscore < level){
+                    highscore = level;
+                }
                 resetNextLevel();
             }
             else{
+                if(highscore < level){
+                    highscore = level;
+                }
                 resetToLevel1();
             }
 
