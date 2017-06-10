@@ -23,6 +23,13 @@ function init() {
 
 }
 
+function resetToLevel1(){
+    level = 1;
+    correctBox = Math.floor((Math.random() * 6));
+    levelDisplay.textContent = String(level);
+    colourBoxes();
+}
+
 function resetNextLevel(){
     correctBox = Math.floor((Math.random() * 6));
     levelDisplay.textContent = String(level);
@@ -109,7 +116,7 @@ function initBoxes() {
                 resetNextLevel();
             }
             else{
-                init();
+                resetToLevel1();
             }
 
         });
