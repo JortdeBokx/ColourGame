@@ -116,25 +116,36 @@ function getColourStyle(colour){
 
 function initBoxes() {
     for (var i = 0; i < colouredBoxes.length; i++) {
-        colouredBoxes[i].addEventListener("click", function() {
-            if (this.getAttribute("id") === "colourbox" + String(correctBox)) {
-                level += 1;
-                if(highscore < level){
-                    highscore = level - 1;
-                }
-                resetNextLevel();
-            }
-            else{
-                if(highscore < level){
-                    highscore =  level - 1;
-                }
-                ShowRightOne();
-                setTimeout(resetToLevel1, 2000);
-            }
-
-        });
+        colouredBoxes[i].addEventListener("click", clickevent);
     }
 }
+
+function clickevent(){
+    if (this.getAttribute("id") === "colourbox" + String(correctBox)) {
+        level += 1;
+        if(highscore < level){
+            highscore = level - 1;
+        }
+        resetNextLevel();
+    }
+    else{
+        if(highscore < level){
+            highscore =  level - 1;
+        }
+        for (var i = 0; i < colouredBoxes.length; i++) {
+            colouredBoxes[i].removeEventListener("click", clickevent);
+        }
+        ShowRightOne();
+        setTimeout(exc, 1000);
+
+    }
+
+}
+ function exc() {
+     initBoxes();
+     resetToLevel1();
+ }
+
 
 function ShowRightOne() {
     for (var i = 0; i < colouredBoxes.length; i++) {
