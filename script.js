@@ -64,7 +64,7 @@ function colourBoxes(){
 }
 function calculateDiffcolour() {
     var b1 = 50 / (level /10);
-    var b2 = 50 / (level);
+    var b2 = 55 / (level/5);
     var b3 = b2 - b1;
     var Deviance = Math.floor((Math.random() * b3) + b1);
     var random_boolean = Math.random() >= 0.5;
@@ -128,9 +128,19 @@ function initBoxes() {
                 if(highscore < level){
                     highscore =  level - 1;
                 }
-                resetToLevel1();
+                ShowRightOne();
+                setTimeout(resetToLevel1, 2000);
             }
 
         });
     }
+}
+
+function ShowRightOne() {
+    for (var i = 0; i < colouredBoxes.length; i++) {
+        if (colouredBoxes[i].getAttribute("id") !== "colourbox" + String(correctBox)) {
+            colouredBoxes[i].style.background = "#222222";
+        }
+    }
+
 }
