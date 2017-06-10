@@ -54,8 +54,8 @@ function calculateDiffcolour() {
 }
 
 function calculateDiffcolourAll3() {
-    var b1 = 10 / level * 10;
-    var b2 = 15 / level * 10;
+    var b1 = 10 / level ;
+    var b2 = 15 / level ;
     var b3 = b2 - b1;
     var Deviance;
     var random_boolean;
