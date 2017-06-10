@@ -15,6 +15,15 @@ init();
 
 function init() {
     //initialises the playing field
+    level = 1;
+    correctBox = Math.floor((Math.random() * 6));
+    levelDisplay.textContent = String(level);
+    initBoxes();
+    colourBoxes();
+
+}
+
+function resetNextLevel(){
     correctBox = Math.floor((Math.random() * 6));
     levelDisplay.textContent = String(level);
     colourBoxes();
@@ -22,10 +31,8 @@ function init() {
 
 function colourBoxes(){
     //loops through all boxes, giving the different one a slightly different colour than the rest.
-    //deviance to other boxes dependant on the current level
-    //level 1-5: change all 3 colour values, deviance = + or - random between 10/level and 15/level
-    //level 6-10: change, randomly, 2 of the colour values
-    //level 10-20: change, randomly, 1 of the colour values
+    //deviance to other boxes depending on the current level
+
 
     generateRandomColour();
 
@@ -43,62 +50,68 @@ function colourBoxes(){
 
 }
 function calculateDiffcolour() {
-    if(level <= 5){
-        return calculateDiffcolourAll3();
-    }else if(level > 5 && level <= 10){
-        return calculateDiffcolourOnly2();
-    }else{
-        return calculateDiffcolour1();
-    }
-
-}
-
-function calculateDiffcolourAll3() {
-    var b1 = 10 / level ;
-    var b2 = 15 / level ;
+    var b1 = 40 / (level /2);
+    var b2 = 60 / (level);
     var b3 = b2 - b1;
-    var Deviance;
-    var random_boolean;
+    var Deviance = Math.floor((Math.random() * b3) + b1);
+    var random_boolean = Math.random() >= 0.5;
+    var colourToChange =  Math.floor((Math.random() * 3));
 
-    var r;
-    var g;
-    var b;
+    var r = chosenColour[0];
+    var g = chosenColour[1];
+    var b = chosenColour[2];
 
-    random_boolean = Math.random() >= 0.5;
-    Deviance = Math.floor((Math.random() * b3) + b1);
-    if (random_boolean) {
-        r = chosenColour[0] + Deviance;
-    } else {
-        r = chosenColour[0] - Deviance;
+    if(colourToChange === 0){
+        //change red
+        if (random_boolean) {
+            r += Deviance;
+        } else {
+            r -= Deviance;
+        }
+
+    }else if(colourToChange === 1){
+        //change green
+        if (random_boolean) {
+            g += Deviance;
+        } else {
+            g -= Deviance;
+        }
+
+    }else{
+        //change blue
+        if (random_boolean) {
+            b += Deviance;
+        } else {
+            b -= Deviance;
+        }
     }
 
-    random_boolean = Math.random() >= 0.5;
-    Deviance = Math.floor((Math.random() * b3) + b1);
-    if (random_boolean) {
-        g = chosenColour[1] + Deviance;
-    } else {
-        g = chosenColour[1] - Deviance;
-    }
-
-    random_boolean = Math.random() >= 0.5;
-    Deviance = Math.floor((Math.random() * b3) + b1);
-    if (random_boolean) {
-        b = chosenColour[2] + Deviance;
-    } else {
-        b = chosenColour[2] - Deviance;
-    }
-
-    return [r,b,g];
+    return [r,g,b];
 }
 
 function generateRandomColour(){
     //have minimum value 70 because dark background
-    var r = Math.floor((Math.random() * 186) + 70);
-    var g = Math.floor((Math.random() * 186) + 70);
-    var b = Math.floor((Math.random() * 186) + 70);
+    var r = Math.floor((Math.random() * 126) + 70);
+    var g = Math.floor((Math.random() * 126) + 70);
+    var b = Math.floor((Math.random() * 126) + 70);
     chosenColour = [r,g,b];
 }
 
 function getColourStyle(colour){
     return "rgb(" + colour[0] + "," + colour[1] + "," + colour[2] + ")";
+}
+
+function initBoxes() {
+    for (var i = 0; i < colouredBoxes.length; i++) {
+        colouredBoxes[i].addEventListener("click", function() {
+            if (this.getAttribute("id") === "colourbox" + String(correctBox)) {
+                level += 1;
+                resetNextLevel();
+            }
+            else{
+                init();
+            }
+
+        });
+    }
 }
