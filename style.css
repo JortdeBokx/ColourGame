@@ -3,6 +3,7 @@ body{
     background: black;
     text-align: center;
     min-height: 100%;
+    user-select: none;
 }
 
 #content{
@@ -29,10 +30,9 @@ header h1{
 
 #controls{
     background: white;
-    max-width: 1000px;
-    margin: auto;
+    margin: 0;
+    width: 100%;
     color: black;
-    padding: 0;
     text-align: left;
 
     font-family: GT Walsheim, sans-serif;
@@ -41,9 +41,18 @@ header h1{
     font-weight: 700;
 }
 
+#controls div{
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px 50px;
+}
+
+
+
 #field{
     max-width: 1000px;
     margin: 0 auto;
+
 }
 
 .colourbox{
@@ -54,6 +63,9 @@ header h1{
     height: 200px;
     margin: 50px;
     border-radius: 10px;
+
+    transition: width 0.5s, height 0.5s,
+            background 0.6s;
 }
 
 
