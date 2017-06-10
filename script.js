@@ -63,7 +63,7 @@ function colourBoxes(){
 
 }
 function calculateDiffcolour() {
-    var b1 = 40 / (level /10);
+    var b1 = 50 / (level /10);
     var b2 = 50 / (level);
     var b3 = b2 - b1;
     var Deviance = Math.floor((Math.random() * b3) + b1);
@@ -120,13 +120,13 @@ function initBoxes() {
             if (this.getAttribute("id") === "colourbox" + String(correctBox)) {
                 level += 1;
                 if(highscore < level){
-                    highscore = level;
+                    highscore = level - 1;
                 }
                 resetNextLevel();
             }
             else{
                 if(highscore < level){
-                    highscore = level;
+                    highscore =  level - 1;
                 }
                 resetToLevel1();
             }
